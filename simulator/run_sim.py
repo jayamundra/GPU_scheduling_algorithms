@@ -2073,8 +2073,8 @@ def main():
     elif FLAGS.schedule == 'gittins':
         # JOBS.init_reserve_gpus(CLUSTER.num_gpu)
         # JOBS.test_reserve_gpus(CLUSTER.num_gpu)
-        job_dist_data = parse_job_dist()
-        gittins_sim_jobs(job_dist_data, True, True)
+        JOBS.job_dist_data = parse_job_dist()
+        gittins_sim_jobs(JOBS.job_dist_data, True, True)
     elif FLAGS.schedule == 'dlas-gpu-1':
         dlas_sim_jobs(True,1)
     elif FLAGS.schedule == 'dlas-gpu-2':
