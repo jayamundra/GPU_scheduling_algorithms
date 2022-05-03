@@ -1982,7 +1982,8 @@ def cal_r_gittins_index(job_data, a):
 
 
 def parse_job_dist():
-    job_dist_file = os.path.join(os.getcwd(), 'yarn-gput1000.csv')
+    # job_dist_file = os.path.join(os.getcwd(), 'yarn-gput1000.csv')
+    job_dist_file = os.path.join(os.getcwd(), 'yarn-gput10000.csv')
     fd = open(job_dist_file, 'r')
     reader = csv.DictReader(fd, delimiter = ',') 
     durations = list()
@@ -2072,8 +2073,8 @@ def main():
     elif FLAGS.schedule == 'gittins':
         # JOBS.init_reserve_gpus(CLUSTER.num_gpu)
         # JOBS.test_reserve_gpus(CLUSTER.num_gpu)
-        JOBS.job_dist_data = parse_job_dist()
-        gittins_sim_jobs(JOBS.job_dist_data, True, True)
+        job_dist_data = parse_job_dist()
+        gittins_sim_jobs(job_dist_data, True, True)
     elif FLAGS.schedule == 'dlas-gpu-1':
         dlas_sim_jobs(True,1)
     elif FLAGS.schedule == 'dlas-gpu-2':
