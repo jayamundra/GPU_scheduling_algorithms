@@ -190,29 +190,29 @@ class _Log(object):
             # mem.append(event_time)
             for switch in CLUSTER.switch_list:
                 for node in switch.node_list:
-                    # free_gpu = node.check_free_gpus()
-                    # #updage gpu
-                    # idle_gpu += free_gpu
-                    # busy_gpu += node.num_gpu - free_gpu
-                    # #update node
-                    # if free_gpu == node.num_gpu:
-                    #     idle_node += 1
-                    # elif free_gpu > 0:
-                    #     busy_node += 1
-                    # elif free_gpu == 0:
-                    #     full_node += 1
+                    free_gpu = node.check_free_gpus()
+                    #updage gpu
+                    idle_gpu += free_gpu
+                    busy_gpu += node.num_gpu - free_gpu
+                    #update node
+                    if free_gpu == node.num_gpu:
+                        idle_node += 1
+                    elif free_gpu > 0:
+                        busy_node += 1
+                    elif free_gpu == 0:
+                        full_node += 1
 
 
-                    # #cpu 
-                    # free_cpu = node.check_free_cpus()
-                    # busy_cpu = node.num_cpu - free_cpu
-                    # b_gpu = node.num_gpu - free_gpu
+                    #cpu
+                    free_cpu = node.check_free_cpus()
+                    busy_cpu = node.num_cpu - free_cpu
+                    b_gpu = node.num_gpu - free_gpu
 
-                    # #network in or out
-                    # cpu.append(busy_cpu)
-                    # gpu.append(b_gpu)
-                    # net.append(node.network_in)
-                    # net.append(node.network_out)
+                    #network in or out
+                    cpu.append(busy_cpu)
+                    gpu.append(b_gpu)
+                    net.append(node.network_in)
+                    net.append(node.network_out)
 
                     used_mem = FLAGS.mem_p_node - node.free_mem + 2
                     if used_mem > 2:
