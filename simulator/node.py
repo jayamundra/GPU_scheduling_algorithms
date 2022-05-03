@@ -152,7 +152,7 @@ class _Node(object):
         cpu = self.release_cpus(node_dict['num_cpu'])
         gpu = self.release_gpus(node_dict['num_gpu'])
 
-        self.free_mem = self.free_mem + node_dict['mem']
+        # self.free_mem = self.free_mem + node_dict['mem']
 
         return (cpu and gpu)
 
